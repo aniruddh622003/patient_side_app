@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patient_side_app/home/upcoming_widget.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -14,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Upadhyay Hospital',
+        title: const Text('UH Care For You',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -51,15 +52,11 @@ class _HomeScreenState extends State<HomeScreen> {
           const SizedBox(width: 10),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-          ],
-        ),
+      body: Column(
+        children: [
+          UpcomingAppointments(),
+          const SizedBox(height: 200),
+        ],
       ),
     );
   }
