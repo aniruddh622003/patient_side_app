@@ -14,7 +14,7 @@ class _UpcomingAppointmentsState extends State<UpcomingAppointments> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       child: Column(
         children: [
           Row(
@@ -48,7 +48,9 @@ class _UpcomingAppointmentsState extends State<UpcomingAppointments> {
               ),
               TextButton(
                   onPressed: () {
-                    // Navigate to the appointments screen
+                    setState(() {
+                      appointment = !appointment;
+                    });
                   },
                   child: const Text('See all'),
                   style: ButtonStyle(
