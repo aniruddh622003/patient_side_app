@@ -43,6 +43,7 @@ class _ManageFamilyWidgetState extends State<ManageFamilyWidget> {
           SingleChildScrollView(
             scrollDirection: Axis.horizontal,
             child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 for (var member in family)
                   FamilyMemberIcon(
@@ -107,31 +108,46 @@ class FamilyMemberIcon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-        padding: const EdgeInsets.only(right: 15),
-        child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 70,
-                height: 70,
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.primary,
-                  shape: BoxShape.circle,
-                ),
-                child: GestureDetector(
-                  onTap: () {
-                    onTap();
-                  },
-                  child: FadeInImage.assetNetwork(
-                    placeholder: 'assets/avatar.png',
-                    image: member['avatar'],
-                    width: 50,
+      padding: const EdgeInsets.only(right: 10),
+      child: Container(
+        width: 70, // Replace with desired width
+        child: Row(mainAxisAlignment: MainAxisAlignment.start, children: [
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  width: 70,
+                  height: 70,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    shape: BoxShape.circle,
+                  ),
+                  child: GestureDetector(
+                    onTap: () {
+                      onTap();
+                    },
+                    child: FadeInImage.assetNetwork(
+                      placeholder: 'assets/avatar.png',
+                      image: member['avatar'],
+                      width: 50,
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 10),
-              Text(member['name'], style: TextStyle(fontSize: 16)),
-            ]));
+                const SizedBox(height: 10),
+                Text(
+                  member['name'],
+                  style: TextStyle(fontSize: 16),
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+                  textAlign: TextAlign.center,
+                ),
+              ],
+            ),
+          )
+        ]),
+      ),
+    );
   }
 }
