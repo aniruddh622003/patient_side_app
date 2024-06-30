@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:patient_side_app/home/manage_family.dart';
+import 'package:patient_side_app/home/our_doctors.dart';
 import 'package:patient_side_app/home/upcoming_widget.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -54,20 +55,22 @@ class _HomeScreenState extends State<HomeScreen> {
             const SizedBox(width: 10),
           ],
         ),
-        body: Column(
-          children: [
-            UpcomingAppointments(),
-            ManageFamilyWidget()
-            // Our Doctors
-          ],
+        body: const SingleChildScrollView(
+          child: Column(
+            children: [
+              UpcomingAppointments(),
+              ManageFamilyWidget(),
+              OurDoctorsWidget()
+            ],
+          ),
         ),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: selectedIndex,
-          onTap: (index) {
-            setState(() {
-              selectedIndex = index;
-            });
-          },
+          // onTap: (index) {
+          //   setState(() {
+          //     selectedIndex = index;
+          //   });
+          // },
           items: const <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
